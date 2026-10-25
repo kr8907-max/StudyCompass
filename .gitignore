@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local application data
+study_data.json
+
+# Editor and OS files
+.vscode/
+.DS_Store
+Thumbs.db
