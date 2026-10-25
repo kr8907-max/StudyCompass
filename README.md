@@ -2,6 +2,12 @@
 
 Study Compass is a Python desktop app for focused study sessions. It includes a Pomodoro timer, task and reminder lists, and study-time analytics.
 
+## Open the web app
+
+Visit [Study Compass](https://kr8907-max.github.io/StudyCompass/) in your browser. The web version includes a focus timer, tasks, reminders, analytics, and session history. On supported browsers, use **Install app** to add it to your desktop or home screen.
+
+Web-app data is saved locally in each browser and does not sync between devices or visitors. Use **Settings & data** to export a backup or import a backup, including the desktop app's `study_data.json`.
+
 ## Run the app
 
 Requires Python 3.8 or newer. Tkinter is included with most standard Python installations.
