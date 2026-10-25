@@ -1,4 +1,4 @@
-const CACHE_NAME = "study-compass-v5";
+const CACHE_NAME = "study-compass-v6";
 const APP_FILES = [
   "./",
   "./index.html",
