@@ -6,6 +6,8 @@ Study Compass is a Python desktop app for focused study sessions. It includes a 
 
 Visit [Study Compass](https://kr8907-max.github.io/StudyCompass/) in your browser. The web version includes a focus timer, tasks, reminders, analytics, and session history. On supported browsers, use **Install app** to add it to your desktop or home screen.
 
+Choose **About the app** in the app header or sidebar to read about its features and founder.
+
 Web-app data is saved locally in each browser and does not sync between devices or visitors. Use **Settings & data** to export a backup or import a backup, including the desktop app's `study_data.json`.
 
 ## Founder

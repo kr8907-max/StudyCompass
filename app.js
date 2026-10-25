@@ -167,10 +167,10 @@
     if (!target) return;
     activePage = page;
     $$(".page").forEach(section => section.classList.toggle("active", section === target));
-    $$(".nav-item[data-page], .mobile-nav-item[data-page]").forEach(button => {
+    $$(".nav-item[data-page], .mobile-nav-item[data-page], .topbar [data-page]").forEach(button => {
       button.classList.toggle("active", button.dataset.page === page);
     });
-    const titles = { timer: "Focus timer", tasks: "My tasks", reminders: "Reminders", analytics: "Analytics", history: "Session history", settings: "Settings & data" };
+    const titles = { timer: "Focus timer", tasks: "My tasks", reminders: "Reminders", analytics: "Analytics", history: "Session history", settings: "Settings & data", about: "About the app" };
     $("#page-title").textContent = titles[page] || "Study Compass";
     if (page === "analytics") renderAnalytics();
     if (page === "history") renderHistory();

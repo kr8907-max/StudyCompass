@@ -70,6 +70,7 @@ h2, h3, p { overflow-wrap: anywhere; }
 .button-secondary { border-color: #444057; background: #252536; color: var(--text); }
 .button-secondary:hover { border-color: #755169; background: #302a3d; }
 .button-quiet { border-color: #444057; background: transparent; color: var(--text); }
+.about-button.active { border-color: #755169; background: #302134; color: var(--pink-soft); }
 .button-icon { width: 38px; padding: 0; border-color: #444057; background: #252536; color: var(--muted); font-size: 19px; }
 .button-danger { border-color: #704047; background: #332126; color: #ff9c9c; }
 .button-danger:hover { background: #49252e; }

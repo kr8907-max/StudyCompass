@@ -25,6 +25,7 @@
           <button class="nav-item" data-page="reminders"><span class="nav-icon">♧</span> Reminders</button>
           <button class="nav-item" data-page="analytics"><span class="nav-icon">▥</span> Analytics</button>
           <button class="nav-item" data-page="history"><span class="nav-icon">↺</span> Session history</button>
+          <button class="nav-item" data-page="about"><span class="nav-icon">ⓘ</span> About the app</button>
         </nav>
         <div class="sidebar-bottom">
           <div class="local-note"><span class="status-dot"></span><span>Your data stays in this browser</span></div>
@@ -42,6 +43,7 @@
           <div class="topbar-actions">
             <span class="privacy-pill"><span class="status-dot"></span> Private to this device</span>
             <button id="install-button" class="button button-quiet hidden" type="button">Install app</button>
+            <button class="button button-secondary about-button" data-page="about" type="button">About the app</button>
             <button class="avatar" type="button" aria-label="Study Compass">SC</button>
           </div>
         </header>
@@ -147,18 +149,24 @@
           </section>
         </section>
 
-        <section class="panel founder-panel" aria-labelledby="founder-heading">
-          <div class="founder-copy">
-            <span class="eyebrow">ABOUT THE APP</span>
-            <h2 id="founder-heading">Meet the founder</h2>
-            <p>Study Compass is a study-planning and focus app designed to help you build a steady routine. It brings together a Pomodoro timer with short and long breaks, task lists, reminders, study-time analytics, and session history.</p>
-            <p>Plan your next steps, stay focused in manageable sessions, remember what needs doing, and see the progress you make over time. Your study data stays in your browser.</p>
+        <section id="page-about" class="page" aria-labelledby="page-title">
+          <div class="page-intro">
+            <div><span class="eyebrow">ABOUT THE APP</span><h2>Study Compass<span class="pink-dot">.</span></h2><p>A simple workspace for building a more focused and consistent study routine.</p></div>
+            <span class="large-page-icon">ⓘ</span>
           </div>
-          <div class="founder-credit">
-            <span class="founder-label">FOUNDED BY</span>
-            <strong>KHUSHI ROY</strong>
-            <a href="mailto:khushi31roy@gmail.com">khushi31roy@gmail.com</a>
-          </div>
+          <section class="panel founder-panel" aria-labelledby="founder-heading">
+            <div class="founder-copy">
+              <span class="eyebrow">WHAT IT DOES</span>
+              <h2 id="founder-heading">Plan your time. Make progress.</h2>
+              <p>Study Compass brings a Pomodoro focus timer with short and long breaks together with task lists, reminders, study-time analytics, and session history.</p>
+              <p>Use it to break studying into manageable sessions, keep track of what needs doing, remember important tasks, and see the time you invest in learning. Your study data stays in your browser.</p>
+            </div>
+            <div class="founder-credit">
+              <span class="founder-label">CREATED BY</span>
+              <strong>KHUSHI ROY</strong>
+              <a href="mailto:khushi31roy@gmail.com">khushi31roy@gmail.com</a>
+            </div>
+          </section>
         </section>
 
         <footer class="app-footer"><span>Made for the next small step <span class="pink-dot">♥</span></span><span>Study Compass · Your data stays on your device</span></footer>
