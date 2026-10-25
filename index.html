@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#11111b">
+    <meta name="description" content="Study Compass helps you focus with a Pomodoro timer, task lists, reminders, and study analytics.">
+    <title>Study Compass</title>
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="icon" href="./icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#timer" aria-label="Study Compass home">
+          <span class="brand-mark">S</span>
+          <span>Study<span class="brand-accent">Compass</span></span>
+        </a>
+        <p class="side-label">WORKSPACE</p>
+        <nav class="nav-list" aria-label="Main navigation">
+          <button class="nav-item active" data-page="timer"><span class="nav-icon">◷</span> Focus timer</button>
+          <button class="nav-item" data-page="tasks"><span class="nav-icon">✓</span> My tasks <span id="nav-task-count" class="nav-count">0</span></button>
+          <button class="nav-item" data-page="reminders"><span class="nav-icon">♧</span> Reminders</button>
+          <button class="nav-item" data-page="analytics"><span class="nav-icon">▥</span> Analytics</button>
+          <button class="nav-item" data-page="history"><span class="nav-icon">↺</span> Session history</button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="local-note"><span class="status-dot"></span><span>Your data stays in this browser</span></div>
+          <button class="nav-item" data-page="settings"><span class="nav-icon">⚙</span> Settings & data</button>
+          <a class="repo-link" href="https://github.com/kr8907-max/StudyCompass" target="_blank" rel="noreferrer">About Study Compass ↗</a>
+        </div>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <div>
+            <p id="today-label" class="eyebrow"></p>
+            <h1 id="page-title">Focus timer</h1>
+          </div>
+          <div class="topbar-actions">
+            <span class="privacy-pill"><span class="status-dot"></span> Private to this device</span>
+            <button id="install-button" class="button button-quiet hidden" type="button">Install app</button>
+            <button class="avatar" type="button" aria-label="Study Compass">SC</button>
+          </div>
+        </header>
+
+        <div id="notice" class="notice hidden" role="status"></div>
+
+        <section id="page-timer" class="page active" aria-labelledby="page-title">
+          <div class="welcome-row">
+            <div><h2>Make today count<span class="pink-dot">.</span></h2><p>A little focus goes a long way.</p></div>
+            <button class="button button-secondary" data-navigate="tasks" type="button">＋ Add a task</button>
+          </div>
+          <div class="stats-grid">
+            <article class="stat-card"><span class="stat-icon pink">◷</span><span class="stat-label">FOCUS TODAY</span><strong id="stat-today">0<span> min</span></strong><small id="stat-goal">of 120 min goal</small></article>
+            <article class="stat-card"><span class="stat-icon yellow">✦</span><span class="stat-label">STUDY STREAK</span><strong id="stat-streak">0<span> days</span></strong><small>Keep showing up</small></article>
+            <article class="stat-card"><span class="stat-icon blue">✓</span><span class="stat-label">OPEN TASKS</span><strong id="stat-open">0</strong><small>One step at a time</small></article>
+          </div>
+          <div class="dashboard-grid">
+            <section class="panel timer-panel">
+              <div class="panel-heading"><div><span class="eyebrow">POMODORO SESSION</span><h2>Time to focus</h2></div><span id="timer-status" class="live-pill"><span class="status-dot"></span> Ready when you are</span></div>
+              <div class="mode-switch" role="group" aria-label="Timer mode">
+                <button class="mode-button active" data-mode="focus" type="button">Focus</button>
+                <button class="mode-button" data-mode="short" type="button">Short break</button>
+                <button class="mode-button" data-mode="long" type="button">Long break</button>
+              </div>
+              <div class="timer-face" id="timer-face">
+                <svg class="timer-ring" viewBox="0 0 260 260" aria-hidden="true"><circle class="ring-track" cx="130" cy="130" r="116"></circle><circle id="timer-progress" class="ring-progress" cx="130" cy="130" r="116"></circle></svg>
+                <div class="timer-readout"><strong id="timer-display">25:00</strong><span id="timer-caption">FOCUS SESSION</span></div>
+              </div>
+              <div class="timer-controls"><button id="timer-start" class="button button-primary" type="button">Start focus</button><button id="timer-finish" class="button button-secondary" type="button">Finish & log</button><button id="timer-reset" class="button button-icon" type="button" aria-label="Reset timer" title="Reset timer">↺</button></div>
+              <p class="timer-hint">Choose a subject and settle in. You’ve got this.</p>
+            </section>
+            <section class="panel focus-settings">
+              <div class="panel-heading"><div><span class="eyebrow">YOUR ROUTINE</span><h2>Focus settings</h2></div><span class="setting-symbol">✳</span></div>
+              <label class="field-label" for="subject-select">STUDYING</label>
+              <div class="subject-row"><select id="subject-select"></select><button id="add-subject-button" class="button button-secondary compact" type="button">＋</button></div>
+              <form id="subject-form" class="inline-form hidden"><label class="visually-hidden" for="new-subject">New subject</label><input id="new-subject" maxlength="40" placeholder="New subject name" required><button class="button button-primary compact" type="submit">Add</button></form>
+              <div class="field-grid">
+                <label><span class="field-label">FOCUS</span><span class="number-field"><input id="focus-minutes" type="number" min="1" max="120"><span>min</span></span></label>
+                <label><span class="field-label">SHORT BREAK</span><span class="number-field"><input id="short-minutes" type="number" min="1" max="120"><span>min</span></span></label>
+                <label><span class="field-label">LONG BREAK</span><span class="number-field"><input id="long-minutes" type="number" min="1" max="120"><span>min</span></span></label>
+                <label><span class="field-label">DAILY GOAL</span><span class="number-field"><input id="goal-minutes" type="number" min="10" max="600" step="10"><span>min</span></span></label>
+              </div>
+              <div class="goal-block"><div class="goal-meta"><span>Today’s progress</span><strong id="goal-progress-text">0 / 120 min</strong></div><div class="progress-track"><span id="goal-progress-bar"></span></div></div>
+              <div class="routine-foot"><span class="tiny-sparkle">✦</span><span id="routine-streak">Start a focus session to begin your streak.</span></div>
+            </section>
+          </div>
+          <section class="panel preview-panel">
+            <div class="panel-heading"><div><span class="eyebrow">UP NEXT</span><h2>Your study plan</h2></div><button class="text-button" data-navigate="tasks" type="button">All tasks →</button></div>
+            <div id="task-preview" class="task-preview"></div>
+          </section>
+        </section>
+
+        <section id="page-tasks" class="page" aria-labelledby="page-title">
+          <div class="page-intro"><div><span class="eyebrow">YOUR WORKSPACE</span><h2>Small steps, big progress<span class="pink-dot">.</span></h2><p>Keep the important things in view and celebrate every finish.</p></div><span class="large-page-icon">✓</span></div>
+          <section class="panel content-panel">
+            <form id="task-form" class="add-row"><label class="visually-hidden" for="task-input">Add a task</label><input id="task-input" maxlength="180" placeholder="What do you need to get done?" required><select id="task-subject" aria-label="Subject"></select><button class="button button-primary" type="submit">＋ Add task</button></form>
+            <div class="list-toolbar"><span id="task-summary" class="muted"></span><button id="clear-done" class="text-button" type="button">Clear completed</button></div>
+            <div id="task-list" class="task-list"></div>
+          </section>
+        </section>
+
+        <section id="page-reminders" class="page" aria-labelledby="page-title">
+          <div class="page-intro"><div><span class="eyebrow">DON’T FORGET</span><h2>Reminders & plans<span class="pink-dot">.</span></h2><p>Plan ahead, set a due time, and keep moving.</p></div><span class="large-page-icon">♧</span></div>
+          <section class="panel content-panel">
+            <form id="reminder-form" class="reminder-form">
+              <label class="reminder-title-field"><span class="field-label">REMINDER</span><input id="reminder-title" maxlength="120" placeholder="What do you need to remember?" required></label>
+              <label><span class="field-label">DUE DATE</span><input id="reminder-date" type="date"></label>
+              <label><span class="field-label">TIME</span><input id="reminder-time" type="time"></label>
+              <label><span class="field-label">PRIORITY</span><select id="reminder-priority"><option>Medium</option><option>High</option><option>Low</option></select></label>
+              <label><span class="field-label">SUBJECT</span><select id="reminder-subject"></select></label>
+              <button class="button button-primary" type="submit">＋ Add reminder</button>
+            </form>
+            <div class="filter-row"><div id="reminder-filters" class="filter-group" role="group" aria-label="Filter reminders"><button class="filter-chip active" data-filter="All" type="button">All</button><button class="filter-chip" data-filter="Today" type="button">Today</button><button class="filter-chip" data-filter="Overdue" type="button">Overdue</button><button class="filter-chip" data-filter="Done" type="button">Done</button></div><span id="reminder-summary" class="muted"></span></div>
+            <div id="reminder-list" class="reminder-list"></div>
+          </section>
+        </section>
+
+        <section id="page-analytics" class="page" aria-labelledby="page-title">
+          <div class="page-intro"><div><span class="eyebrow">YOUR MOMENTUM</span><h2>Progress you can see<span class="pink-dot">.</span></h2><p>Every focused minute adds up.</p></div><span class="large-page-icon">▥</span></div>
+          <section class="panel content-panel">
+            <div class="analytics-toolbar"><div><span class="eyebrow">TIME BY SUBJECT</span><h2>Where your focus goes</h2></div><div id="range-filters" class="filter-group" role="group" aria-label="Analytics date range"><button class="filter-chip" data-range="0" type="button">All time</button><button class="filter-chip" data-range="30" type="button">30 days</button><button class="filter-chip active" data-range="7" type="button">7 days</button></div></div>
+            <div id="analytics-callout" class="analytics-callout"></div><div id="subject-chart" class="subject-chart"></div>
+            <div class="weekly-heading"><div><span class="eyebrow">LAST 7 DAYS</span><h2>Your weekly rhythm</h2></div><span id="weekly-total" class="muted"></span></div>
+            <div id="weekly-chart" class="weekly-chart"></div>
+          </section>
+        </section>
+
+        <section id="page-history" class="page" aria-labelledby="page-title">
+          <div class="page-intro"><div><span class="eyebrow">EVERY SESSION COUNTS</span><h2>Your focus history<span class="pink-dot">.</span></h2><p>A record of the time you’ve invested in yourself.</p></div><span class="large-page-icon">↺</span></div>
+          <section class="panel content-panel">
+            <div class="list-toolbar"><div><span class="eyebrow">COMPLETED SESSIONS</span><p id="history-summary" class="muted"></p></div></div>
+            <div id="history-list" class="history-list"></div>
+          </section>
+        </section>
+
+        <section id="page-settings" class="page" aria-labelledby="page-title">
+          <div class="page-intro"><div><span class="eyebrow">YOUR SPACE</span><h2>Settings & your data<span class="pink-dot">.</span></h2><p>Your study data stays in this browser and is never uploaded to a server.</p></div><span class="large-page-icon">⚙</span></div>
+          <section class="panel content-panel settings-panel">
+            <div class="settings-row"><div><h3>Back up your data</h3><p>Download your subjects, tasks, reminders, and sessions as a JSON file.</p></div><button id="export-data" class="button button-secondary" type="button">↓ Export data</button></div>
+            <div class="settings-row"><div><h3>Restore data</h3><p>Import a Study Compass JSON backup or your desktop app’s <code>study_data.json</code>.</p></div><label class="button button-secondary file-button">↑ Choose backup<input id="import-data" type="file" accept=".json,application/json" hidden></label></div>
+            <div class="settings-row danger-row"><div><h3>Start fresh</h3><p>Remove the study data saved by this browser. This cannot be undone.</p></div><button id="clear-data" class="button button-danger" type="button">Clear browser data</button></div>
+            <div class="privacy-note"><span>🔒</span><p><strong>Your privacy matters.</strong> This is a static site. Tasks, reminders, and study sessions are stored locally in your browser, not shared between visitors or sent to a server. Export a backup before clearing browser data.</p></div>
+          </section>
+        </section>
+
+        <footer class="app-footer"><span>Made for the next small step <span class="pink-dot">♥</span></span><span>Study Compass · Your data stays on your device</span></footer>
+      </main>
+    </div>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <button class="mobile-nav-item active" data-page="timer" type="button"><span>◷</span>Focus</button>
+      <button class="mobile-nav-item" data-page="tasks" type="button"><span>✓</span>Tasks</button>
+      <button class="mobile-nav-item" data-page="reminders" type="button"><span>♧</span>Reminders</button>
+      <button class="mobile-nav-item" data-page="analytics" type="button"><span>▥</span>Stats</button>
+      <button class="mobile-nav-item" data-page="history" type="button"><span>↺</span>History</button>
+      <button class="mobile-nav-item" data-page="settings" type="button"><span>⚙</span>Settings</button>
+    </nav>
+    <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  </body>
+</html>
