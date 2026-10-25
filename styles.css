@@ -226,6 +226,14 @@ input:disabled { opacity: .55; }
 .privacy-note > span { font-size: 17px; }
 .privacy-note p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.65; }
 .privacy-note strong { color: var(--text); }
+.founder-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(210px, .55fr); align-items: center; gap: 30px; margin-top: 18px; padding: 22px; }
+.founder-copy h2 { margin: 5px 0 9px; font-size: 17px; font-weight: 690; letter-spacing: -.3px; }
+.founder-copy p { max-width: 760px; margin: 7px 0 0; color: var(--muted); font-size: 11px; line-height: 1.7; }
+.founder-credit { display: grid; justify-items: start; gap: 7px; padding: 16px 19px; border: 1px solid #343348; border-radius: 14px; background: #171722; }
+.founder-label { color: #858198; font-size: 9px; font-weight: 750; letter-spacing: 1px; }
+.founder-credit strong { color: var(--pink-soft); font-size: 15px; letter-spacing: .3px; }
+.founder-credit a { color: var(--muted); font-size: 11px; }
+.founder-credit a:hover { color: var(--pink-soft); }
 .app-footer { display: flex; justify-content: space-between; gap: 15px; padding: 19px 3px 5px; color: #77748a; font-size: 9px; }
 .notice { position: fixed; z-index: 20; top: 15px; right: 18px; max-width: min(440px, calc(100vw - 36px)); padding: 12px 17px; border: 1px solid #65415a; border-radius: 11px; background: #302134; box-shadow: 0 12px 35px #0007; color: var(--text); font-size: 12px; }
 .notice.error { border-color: #704047; background: #332126; }
@@ -316,6 +324,9 @@ input:disabled { opacity: .55; }
   .history-subject { font-size: 10px; }
   .history-duration { font-size: 9px; }
   .settings-row { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .founder-panel { grid-template-columns: 1fr; gap: 17px; padding: 16px; }
+  .founder-copy h2 { font-size: 15px; }
+  .founder-credit { width: 100%; }
   .app-footer { flex-direction: column; gap: 5px; font-size: 8px; }
   .mobile-nav { position: fixed; z-index: 8; right: 0; bottom: 0; left: 0; display: grid; grid-template-columns: repeat(6, 1fr); padding: 7px max(7px, env(safe-area-inset-right)) calc(7px + env(safe-area-inset-bottom)) max(7px, env(safe-area-inset-left)); border-top: 1px solid #302f43; background: #15151ff5; backdrop-filter: blur(16px); }
   .mobile-nav-item { display: grid; justify-items: center; gap: 3px; min-height: 46px; border: 0; border-radius: 9px; background: transparent; color: #858198; font-size: 8px; font-weight: 650; }

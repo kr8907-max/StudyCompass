@@ -8,6 +8,12 @@ Visit [Study Compass](https://kr8907-max.github.io/StudyCompass/) in your browse
 
 Web-app data is saved locally in each browser and does not sync between devices or visitors. Use **Settings & data** to export a backup or import a backup, including the desktop app's `study_data.json`.
 
+## Founder
+
+Study Compass was created by **KHUSHI ROY** to make it easier to plan study tasks, focus with Pomodoro sessions and breaks, set reminders, and track progress through analytics and session history. These tools can help students build consistent study habits and see the time they invest in learning.
+
+Contact: [khushi31roy@gmail.com](mailto:khushi31roy@gmail.com)
+
 ## Run the app
 
 Requires Python 3.8 or newer. Tkinter is included with most standard Python installations.
